@@ -1,2 +1,1 @@
-# debasispanda.github.io
-My personal repo
+# Debasis Panda
