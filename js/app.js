@@ -39,7 +39,7 @@
         });
 
         $(".skill-name").typed({
-                strings: ["Web Developer. ", "Blogger. ", "User Experience Designer. "],
+                strings: ["Web Developer. ", "Passionate Programmer. ", "User Interface Expert. "],
                 typeSpeed: 50,
                 loop: true
             });
@@ -53,7 +53,8 @@
             return color;
     }
     function PickColor(){
-        var colors = ['#BA4C63','#1FA4B6', '#1D83C1','#CCB2A3', '#1037B5','#EFC84A','#E27C3E','#334D5C','#E05B49','#45B39C'], index = Math.floor(Math.random() * colors.length);
+        var colors = ['#BA4C63','#1FA4B6', '#1D83C1','#CCB2A3', '#1037B5','#EFC84A','#E27C3E','#334D5C','#E05B49','#45B39C'], 
+            index = Math.floor(Math.random() * colors.length);
         return colors[index];
     }
     setInterval(function(){
