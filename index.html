@@ -494,21 +494,10 @@
       ga('send', 'pageview');
 
     </script>
-    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
     <script>
         if (navigator.serviceWorker) {
-            navigator.serviceWorker.register('js/sw.js').then((swRegistration)=>{
-                const messaging = firebase.messaging();
-                messaging.useServiceWorker(swRegistration);
-                console.log('sw registered');
-                document.body.addEventListener('register:push',()=>{
-                    console.log('listeneing');
-                    swRegistration.pushManager.subscribe({userVisibleOnly: true}).then(()=>{
-                        console.log('push Registered');
-                    }).catch((err)=>{
-                        console.log('push Registeration failed', err);
-                    });
-                });
+            navigator.serviceWorker.register('sw.js').then((registration)=>{
+                console.log('Excellent, registered with scope: ', registration.scope);
             });
         }
     </script>
