@@ -87,7 +87,7 @@
             "rating": 8,
             "color": "#F8FF01"
         }, {
-            "skill": "Backbone",
+            "skill": "BackboneJS",
             "rating": 9,
             "color": "#B0DE09"
         }, {
@@ -99,10 +99,6 @@
             "rating": 9,
             "color": "#0D8ECF"
         }, {
-            "skill": "Web API",
-            "rating": 6.5,
-            "color": "#0D52D1"
-        }, {
             "skill": "NodeJs",
             "rating": 6.5,
             "color": "#2A0CD0"
@@ -111,21 +107,21 @@
             "rating": 7,
             "color": "#8A0CCF"
         }, {
-            "skill": "RequireJs",
-            "rating": 8,
+            "skill": "Elastic",
+            "rating": 7,
             "color": "#CD0D74"
         }, {
-            "skill": "Less.js",
+            "skill": "LESS/SCSS",
             "rating": 8,
             "color": "#754DEB"
+        }, {
+            "skill": "Python",
+            "rating": 6,
+            "color": "#333333"
         }, {
             "skill": "Gulp/Webpack",
             "rating": 8,
             "color": "#DDDDDD"
-        }, {
-            "skill": "Jasmine",
-            "rating": 7,
-            "color": "#333333"
         }],
         "valueAxes": [{
             "position": "left",
