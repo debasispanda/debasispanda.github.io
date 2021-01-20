@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+/* eslint-disable import/no-extraneous-dependencies */
 import { createMemoryHistory } from "history";
-import { Router } from "react-router";
+import { Router } from "react-router-dom";
 import App from "./App";
 
 test("renders desktop", () => {
