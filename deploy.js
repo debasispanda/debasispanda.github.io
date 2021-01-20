@@ -1,7 +1,12 @@
 const ghpages = require('gh-pages');
 
-const callback = () => {
-  console.log("Successfully deployed to https://debasispanda.github.io");
+const callback = (err) => {
+  if (err) {
+    console.error(err);
+    throw err;
+  } else {
+    console.log("Successfully deployed to https://debasispanda.github.io");
+  }
 }
 
 ghpages.publish('build', {

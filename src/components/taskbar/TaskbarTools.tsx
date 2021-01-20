@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     info: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(0, 3),
     },
     infoTitle: {
       textAlign: "center",
@@ -84,9 +84,19 @@ export default function TaskbarTools() {
         <DialogTitle id="info-dialog-title" className={classes.infoTitle}>
           Information
         </DialogTitle>
-        <div className={classes.info}>
+        <p className={classes.info}>
           &copy; debasispanda.github.io {new Date().getFullYear()}
-        </div>
+        </p>
+        <p className={classes.info}>
+          This web site created using{" "}
+          <a
+            href="https://create-react-app.dev"
+            target="_blank"
+            rel="noreferrer"
+          >
+            create-react-app
+          </a>
+        </p>
       </Dialog>
     </>
   );
