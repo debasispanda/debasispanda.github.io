@@ -25,7 +25,9 @@
     "eject": "react-scripts eject",
     "format": "prettier --list-different ./src/**/*.{js,ts,jsx,tsx,css}",
     "format:fix": "prettier --write ./src/**/*.{js,ts,jsx,tsx,css}",
-    "lint": "eslint ./src/**/*.{js,ts,jsx,tsx} --color"
+    "lint": "eslint ./src/**/*.{js,ts,jsx,tsx} --color",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": [
