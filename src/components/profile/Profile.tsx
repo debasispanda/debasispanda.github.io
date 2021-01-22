@@ -25,7 +25,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     userName: {
       whiteSpace: "nowrap",
-      fontSize: "2em",
+      fontSize: theme.spacing(4),
+    },
+    item: {
+      [theme.breakpoints.down("xs")]: {
+        paddingTop: theme.spacing(0.5),
+        paddingBottom: theme.spacing(0.5),
+      },
     },
   })
 );
@@ -64,7 +70,7 @@ export default function Profile() {
       <Divider />
       <List>
         {details.map(({ label, type, icon: ListIcon }) => (
-          <ListItem button key={label}>
+          <ListItem button key={label} className={classes.item}>
             <ListItemIcon>
               <ListIcon />
             </ListItemIcon>

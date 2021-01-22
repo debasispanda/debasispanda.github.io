@@ -22,11 +22,16 @@ const useStyles = makeStyles((theme: Theme) =>
     titleIcons: {},
     titleLabel: {},
     explorerContent: {
-      padding: theme.spacing(0.5, 1),
       flexGrow: 1,
       backgroundColor: "#fff",
-      minWidth: "60%",
+      width: "960px",
       margin: "auto",
+      overflowY: "auto",
+      padding: theme.spacing(4, 6),
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+        padding: theme.spacing(2, 3),
+      },
     },
     close: {
       fill: "red",
@@ -34,7 +39,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     addressBar: {
       marginLeft: theme.spacing(2),
-      width: "500px",
+      [theme.breakpoints.up("md")]: {
+        width: "500px",
+      },
       "& *": {
         color: "#fff",
         borderColor: "#fff !important",

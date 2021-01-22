@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
+import {
+  createStyles,
+  withStyles,
+  WithStyles,
+  Theme,
+} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Taskbar from "./components/taskbar/Taskbar";
 import AppRouting from "./AppRouting";
 
 type Props = WithStyles<typeof styles>;
 
-const styles = () =>
+const styles = (theme: Theme) =>
   createStyles({
     app: {
       display: "flex",
@@ -15,6 +20,9 @@ const styles = () =>
     main: {
       flexGrow: 1,
       height: "calc(100% - 64px)",
+      [theme.breakpoints.down("sm")]: {
+        height: "calc(100% - 56px)",
+      },
     },
   });
 

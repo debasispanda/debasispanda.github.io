@@ -7,7 +7,9 @@ import Tooltip from "@material-ui/core/Tooltip";
 import InfoIcon from "@material-ui/icons/Info";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
+import withWidth, { isWidthUp, WithWidth } from "@material-ui/core/withWidth";
 import { openFullscreen, exitFullScreen } from "../../fullScreen";
+import Info from "../info/Info";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,7 +17,6 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: "auto",
     },
     toolIcon: {
-      marginLeft: theme.spacing(2),
       textTransform: "none",
       color: "#fff",
       "& a": {
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function TaskbarTools() {
+function TaskbarTools({ width }: WithWidth) {
   const classes = useStyles();
   const [fullScreen, setFullScreen] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
@@ -65,11 +66,18 @@ export default function TaskbarTools() {
       },
     },
   ];
+  const placement = isWidthUp("lg", width) ? "top" : "right";
+
   return (
     <>
       <div className={classes.tools}>
         {icons.map(({ onClick, label, icon: ToolIcon }) => (
-          <Tooltip key={label} title={label} aria-label={label}>
+          <Tooltip
+            key={label}
+            title={label}
+            aria-label={label}
+            placement={placement}
+          >
             <IconButton onClick={onClick} className={classes.toolIcon}>
               <ToolIcon />
             </IconButton>
@@ -84,20 +92,10 @@ export default function TaskbarTools() {
         <DialogTitle id="info-dialog-title" className={classes.infoTitle}>
           Information
         </DialogTitle>
-        <p className={classes.info}>
-          &copy; debasispanda.github.io {new Date().getFullYear()}
-        </p>
-        <p className={classes.info}>
-          This web site created using{" "}
-          <a
-            href="https://create-react-app.dev"
-            target="_blank"
-            rel="noreferrer"
-          >
-            create-react-app
-          </a>
-        </p>
+        <Info />
       </Dialog>
     </>
   );
 }
+
+export default withWidth()(TaskbarTools);

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-import Popover, { PopoverOrigin } from "@material-ui/core/Popover/Popover";
+import Popover from "@material-ui/core/Popover/Popover";
 import Button from "@material-ui/core/Button";
 import { Divider } from "@material-ui/core";
 import Backdrop from "@material-ui/core/Backdrop";
+import withWidth, { WithWidth } from "@material-ui/core/withWidth";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,42 +26,50 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface HelpData {
-  position: { left: number; top: number };
-  origin: PopoverOrigin;
+  position: { vertical: number; horizontal: number };
+  anchorEl: string;
   description: string;
 }
 
-export default function Help() {
+function Help({ width }: WithWidth) {
   const classes = useStyles();
 
-  const needHelp = !localStorage.getItem("needHelp");
+  const needHelpConfig = localStorage.getItem("needHelp");
+  let needHelp: boolean;
 
-  const height: number = document.querySelector("body")?.clientHeight || 0;
-  const width: number = document.querySelector("body")?.clientWidth || 0;
+  if (needHelpConfig === null) {
+    needHelp = true;
+  } else {
+    needHelp = JSON.parse(needHelpConfig);
+  }
 
   const helpItems: HelpData[] = [
     {
-      position: { left: 100, top: 50 },
-      origin: { vertical: "top", horizontal: 100 },
+      anchorEl: "#shortcuts",
+      position: { horizontal: 100, vertical: 50 },
       description: "Shortcuts: Double click these icons to launch.",
     },
     {
-      position: { left: 50, top: height - 50 },
-      origin: { vertical: "bottom", horizontal: 100 },
+      anchorEl: "#start",
+      position: { horizontal: 0, vertical: -150 },
       description: "Start Menu: Click the start button to launch",
     },
     {
-      position: { left: 350, top: height - 200 },
-      origin: { vertical: "bottom", horizontal: 100 },
+      anchorEl: "#launchers",
+      position: { horizontal: 0, vertical: -150 },
       description: "Taskbar: Click on icon to launch",
     },
     {
-      position: { left: width - 50, top: height - 200 },
-      origin: { vertical: "bottom", horizontal: "right" },
+      anchorEl: "#calendar",
+      position: { horizontal: -50, vertical: -150 },
       description:
         "Fullscreen & calendar: Toggle fullscreen and launch calendar with datetime ",
     },
   ];
+
+  if (!["lg", "xl"].includes(width)) {
+    helpItems.splice(2, 2);
+  }
 
   const [open, setOpen] = useState(needHelp);
 
@@ -92,14 +101,19 @@ export default function Help() {
     }
   };
 
+  const anchorEl = (selector: string) => {
+    return document.querySelector(selector) as Element;
+  };
+
   return (
     <>
       {show && (
         <Backdrop className={classes.backdrop} open={open}>
           <Popover
-            anchorReference="anchorPosition"
+            anchorEl={anchorEl(help.anchorEl)}
+            anchorReference="anchorEl"
             open={open}
-            anchorPosition={help.position}
+            anchorOrigin={help.position}
           >
             <div className={classes.helpPopover}>
               <p>{help.description}</p>
@@ -119,3 +133,5 @@ export default function Help() {
     </>
   );
 }
+
+export default withWidth()(Help);
