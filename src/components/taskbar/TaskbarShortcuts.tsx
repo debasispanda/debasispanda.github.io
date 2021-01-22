@@ -51,7 +51,7 @@ export default function TaskbarShortcuts() {
     },
   ];
   return (
-    <>
+    <div id="launchers">
       {icons.map(({ label, icon: TaskbarIcon, url, externalUrl }) => (
         <Tooltip title={label} key={url}>
           <IconButton className={classes.taskBarIcon}>
@@ -67,6 +67,6 @@ export default function TaskbarShortcuts() {
           </IconButton>
         </Tooltip>
       ))}
-    </>
+    </div>
   );
 }

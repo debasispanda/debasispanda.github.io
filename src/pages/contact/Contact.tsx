@@ -4,8 +4,6 @@ import { Divider, Typography } from "@material-ui/core";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Explorer from "../../components/explorer/Explorer";
 
-// const loaderSize = 100;
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     heading: {
@@ -19,6 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     form: {
       margin: "auto",
+      width: "100%",
     },
   })
 );

@@ -69,7 +69,7 @@ export default function Shortcuts() {
   };
 
   return (
-    <div className={classes.shortcuts}>
+    <div className={classes.shortcuts} id="shortcuts">
       {shortcuts.map(({ label, url, external, icon: ShortcutIcon }) => (
         <div
           key={label}

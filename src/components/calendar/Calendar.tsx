@@ -48,7 +48,7 @@ export default function Calendar() {
   const date = util.format(selectedDate, "dd/MM/yyyy");
 
   return (
-    <div className={classes.calendar}>
+    <div className={classes.calendar} id="calendar">
       <Button onClick={() => setIsOpen(true)}>
         {time} <br /> {date}{" "}
       </Button>

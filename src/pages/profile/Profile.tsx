@@ -7,11 +7,10 @@ import Explorer from "../../components/explorer/Explorer";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     page: {
-      padding: theme.spacing(4, 6),
-      boxSizing: "border-box",
-      width: "800px",
-      margin: "auto",
       cursor: "text",
+      display: "flex",
+      flexDirection: "column",
+      flexGrow: 1,
     },
     heading: {
       textAlign: "center",
@@ -61,7 +60,7 @@ export default function Profile() {
         </Typography>
         <Divider className={classes.divider} />
         <p className={classes.para}>
-          Hi, I am Debasis and a software developer by profession. I use
+          Hi, I am Debasis, a software developer by profession. I use
           <Codes /> etc. in my programming. I always look for learning new stuff
           and keep myself updated.
         </p>
