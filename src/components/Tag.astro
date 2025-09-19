@@ -1,0 +1,28 @@
+---
+import { HashIcon } from "@phosphor-icons/react";
+
+export interface Props {
+  tag: string;
+  tagName: string;
+  size?: "sm" | "lg" | "2xl" | "3xl";
+  className?: string;
+}
+
+const { tag, tagName, className, size = "sm" } = Astro.props;
+---
+
+<a
+  href={`/tags/${tag}/`}
+  class:list={[
+    className,
+    "group-hover:text-accent relative underline decoration-dashed focus-visible:p-1 focus-visible:no-underline group-hover:-top-0.5",
+    { "mr-1 text-sm underline-offset-4": size === "sm" },
+    { "underline-offset-6 mr-2 text-lg": size === "lg" },
+    { "mr-3 text-2xl underline-offset-8": size === "2xl" },
+    { "underline-offset-10 mr-4 text-3xl": size === "3xl" },
+  ]}
+>
+  <HashIcon weight="bold" className="inline-block opacity-80" /><span
+    >{tagName}</span
+  >
+</a>

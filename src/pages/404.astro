@@ -1,0 +1,20 @@
+---
+import Heading from "@/components/Heading.astro";
+import MainLayout from "../layouts/main.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import { ArrowLeftIcon } from "@phosphor-icons/react";
+---
+
+<MainLayout content={{ title: "404 Not Found" }}>
+  <section>
+    <Heading><span aria-hidden="true">¯\_(ツ)_/¯</span></Heading>
+
+    <p class="mt-4 text-2xl sm:text-3xl">404: Page Not Found</p>
+    <LinkButton
+      href="/"
+      class="my-6 text-lg underline decoration-dashed underline-offset-8"
+    >
+      <ArrowLeftIcon className="inline-block" weight="bold" /> Go back home
+    </LinkButton>
+  </section>
+</MainLayout>

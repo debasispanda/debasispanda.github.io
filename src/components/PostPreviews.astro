@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostPreview from "./PostPreview.astro";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+  variant?: "h2" | "h3";
+  className?: string;
+}
+
+const { posts, variant, className = "" } = Astro.props;
+---
+
+<ul class={`${className}`}>
+  {
+    posts.map(post => (
+      <li class="my-6">
+        <PostPreview {...post} variant={variant} />
+      </li>
+    ))
+  }
+</ul>

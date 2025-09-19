@@ -1,0 +1,66 @@
+---
+import MainLayout from "@/layouts/main.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import { HandsPrayingIcon } from "@phosphor-icons/react";
+import getSortedPosts from "@/utils/getSortedPosts";
+import { getCollection } from "astro:content";
+import getUniqueTags from "@/utils/getUniqueTags";
+import Tags from "@/components/Tags.astro";
+import Heading from "@/components/Heading.astro";
+import PostPreviews from "@/components/PostPreviews.astro";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = getSortedPosts(posts);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const recentTags = getUniqueTags(recentPosts);
+---
+
+<MainLayout content={{ title: "Home" }}>
+  <section id="hero" class="pb-6 pt-8">
+    <Heading className="my-4 inline-block text-4xl sm:my-8 sm:text-5xl">
+      Namaste
+      <HandsPrayingIcon
+        weight="bold"
+        className="relative -left-2 inline-block"
+      />
+    </Heading>
+    <p>
+      I’m Debasis, a software engineer focused on building reliable,
+      maintainable web applications. My toolkit includes TypeScript, React,
+      Angular, Node.js, and Python. I care about type-safe code, clear
+      architecture, and measurable performance. This site collects my notes on
+      engineering problems, code patterns, and technical learnings.
+    </p>
+    <p class="mt-2">
+      Away from the keyboard I’m usually planning a roadtrip, experimenting with
+      Indian recipes, or enjoying an action/horror film. Pull up a chair — the
+      blog is where I share what I learn.
+    </p>
+    <p class="mt-6">
+      Read the blog posts or check
+      <LinkButton
+        class="hover:text-accent underline decoration-dashed underline-offset-4"
+        href="/about"
+      >
+        /About
+      </LinkButton> for more info.
+    </p>
+  </section>
+  {
+    !!recentPosts?.length && (
+      <section id="recent-posts" class="my-6">
+        <h2 class="text-2xl font-semibold tracking-wide">My Recent Posts</h2>
+        <PostPreviews posts={recentPosts} />
+      </section>
+    )
+  }
+  {
+    !!recentTags?.length && (
+      <section>
+        <h2 class="text-2xl font-semibold tracking-wide">Recent Tags</h2>
+        <Tags tags={recentTags} size="lg" />
+      </section>
+    )
+  }
+</MainLayout>

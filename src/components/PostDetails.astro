@@ -1,0 +1,70 @@
+---
+import { type CollectionEntry, render } from "astro:content";
+import { Image } from "astro:assets";
+import Datetime from "@/components/Datetime.astro";
+import ShareLinks from "@/components/ShareLinks.astro";
+import PrevNextPost from "@/components/PrevNextPost.astro";
+import Tags from "./Tags.astro";
+import { textToTag } from "@/utils/textToTag";
+import Heading from "./Heading.astro";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+  posts: CollectionEntry<"blog">[];
+}
+
+const { post, posts } = Astro.props;
+
+const {
+  title,
+  description,
+  coverImage,
+  publishedAt,
+  modifiedAt,
+  tags: tagLabels,
+  editable,
+} = post.data;
+
+const { Content } = await render(post);
+const tags = tagLabels.map(textToTag);
+---
+
+<div id="post-content" data-pagefind-body>
+  <Heading className="text-accent">{title}</Heading>
+  <p class="text-sm opacity-70">{description}</p>
+  <div class="my-2 flex items-center gap-2">
+    <Datetime {publishedAt} {modifiedAt} size="lg" />
+    <span
+      aria-hidden="true"
+      class:list={["max-sm:hidden", { hidden: !editable }]}>|</span
+    >
+  </div>
+  {
+    coverImage && (
+      <Image
+        priority
+        layout="constrained"
+        src={coverImage.src}
+        alt={coverImage.alt}
+        class="mb-5 w-full rounded-xl"
+      />
+    )
+  }
+  <article
+    id="article"
+    class="app-prose max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg) mx-auto mt-8"
+  >
+    <Content />
+  </article>
+
+  <hr class="my-8 border-dashed" />
+
+  <Tags tags={tags} className="mb-4" />
+
+  <ShareLinks postTitle={title} />
+
+  <hr class="my-6 border-dashed" />
+
+  <!-- Previous/Next Post Links -->
+  <PrevNextPost currentPostId={post.id} posts={posts} />
+</div>

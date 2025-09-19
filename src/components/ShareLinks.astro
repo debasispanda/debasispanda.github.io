@@ -1,0 +1,46 @@
+---
+import config from "@/site.config";
+import LinkButton from "./LinkButton.astro";
+import type { SocialLink } from "@/types";
+
+const URL = Astro.url;
+const source = URL.href;
+
+const { postTitle } = Astro.props;
+
+const getShareLink = ({ name, url }: SocialLink) => {
+  switch (name) {
+    case "LinkedIn":
+      return `${url}?title=${postTitle}&url=${URL}&source=${source}&mini=true`;
+    case "Facebook":
+      return `${url}?u=${URL}`;
+    case "WhatsApp":
+      return `${url}?text=${URL}`;
+    case "X":
+      return `${url}?title=${postTitle}&url=${URL}`;
+    default:
+      return `${url}?url=${URL}`;
+  }
+};
+---
+
+{
+  config.shareLinks.length > 0 && (
+    <div class="mt-8 items-center gap-1 sm:flex">
+      <span class="block text-center italic">Share this post on:</span>
+      <div class="text-center">
+        {config.shareLinks.map(social => (
+          <LinkButton
+            href={getShareLink(social)}
+            class="scale-90 p-2 hover:rotate-6 sm:p-1"
+            title={social.title}
+            target="_blank"
+          >
+            <social.icon className="inline-block size-6 scale-125 stroke-current stroke-2 sm:scale-110" />
+            <span class="sr-only">{social.title}</span>
+          </LinkButton>
+        ))}
+      </div>
+    </div>
+  )
+}

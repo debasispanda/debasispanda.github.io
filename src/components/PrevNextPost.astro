@@ -1,0 +1,53 @@
+---
+import { getPath } from "@/utils/getPath";
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  currentPostId: string;
+  posts: CollectionEntry<"blog">[];
+}
+const { currentPostId, posts } = Astro.props;
+const allPosts = posts.map(({ data: { title }, id, filePath }) => ({
+  id,
+  title,
+  filePath,
+}));
+
+const currentPostIndex = allPosts.findIndex(a => a.id === currentPostId);
+
+const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
+const nextPost =
+  currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
+---
+
+<div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+  {
+    prevPost && (
+      <a
+        href={getPath(prevPost.id, prevPost.filePath)}
+        class="flex w-full gap-1 hover:opacity-75"
+      >
+        <CaretLeftIcon className="inline-block mt-1" />
+        <div>
+          <span>Previous Post</span>
+          <div class="text-accent/85 text-sm">{prevPost.title}</div>
+        </div>
+      </a>
+    )
+  }
+  {
+    nextPost && (
+      <a
+        href={getPath(nextPost.id, nextPost.filePath)}
+        class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"
+      >
+        <div>
+          <span>Next Post</span>
+          <div class="text-accent/85 text-sm">{nextPost.title}</div>
+        </div>
+        <CaretRightIcon className="inline-block mt-1" />
+      </a>
+    )
+  }
+</div>
