@@ -3,8 +3,11 @@ import { defineConfig } from "astro/config";
 
 import react from "@astrojs/react";
 
+import config from "./src/site.config";
+
 // https://astro.build/config
 export default defineConfig({
+  site: config.site,
   vite: {
     // eslint-disable-next-line
     // @ts-ignore
