@@ -1,0 +1,44 @@
+---
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import { CalendarDotsIcon } from "@phosphor-icons/react";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+export interface Props {
+  class?: string;
+  size?: "sm" | "lg";
+  publishedAt: string | Date;
+  modifiedAt: string | Date | undefined | null;
+}
+
+const {
+  publishedAt,
+  modifiedAt,
+  size = "sm",
+  class: className = "",
+} = Astro.props;
+
+const isModified = modifiedAt && modifiedAt > publishedAt;
+
+const datetime = dayjs(isModified ? modifiedAt : publishedAt);
+
+const date = datetime.format("D MMM, YYYY");
+---
+
+<div class:list={["flex items-center gap-x-2 opacity-80", className]}>
+  <CalendarDotsIcon size={24} weight="bold" />
+  {
+    isModified && (
+      <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
+        Updated:
+      </span>
+    )
+  }
+  <time
+    class:list={["text-sm", { "sm:text-base": size === "lg" }]}
+    datetime={datetime.toISOString()}>{date}</time
+  >
+</div>

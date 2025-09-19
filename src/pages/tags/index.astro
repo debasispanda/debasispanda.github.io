@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "@/layouts/main.astro";
+import getUniqueTags from "@/utils/getUniqueTags";
+import Tags from "@/components/Tags.astro";
+import Heading from "@/components/Heading.astro";
+
+const posts = await getCollection("blog");
+
+let tags = getUniqueTags(posts);
+---
+
+<MainLayout content={{ title: "Tags" }}>
+  <section>
+    <Heading>Tags</Heading>
+    <Tags tags={tags} />
+  </section>
+</MainLayout>

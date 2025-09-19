@@ -1,0 +1,21 @@
+---
+import Tag, { type Props as ITag } from "@/components/Tag.astro";
+
+interface Props {
+  tags: ITag[];
+  size?: "sm" | "lg" | "2xl" | "3xl";
+  className?: string;
+}
+
+const { tags, size: globalSize = "lg", className = "" } = Astro.props;
+---
+
+<ul class={`my-2 ${className}`}>
+  {
+    tags.map(({ tag, tagName, size }) => (
+      <li class="group inline-block">
+        <Tag {tag} {tagName} size={size ?? globalSize} />
+      </li>
+    ))
+  }
+</ul>

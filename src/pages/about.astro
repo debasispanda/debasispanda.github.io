@@ -1,0 +1,60 @@
+---
+import Heading from "@/components/Heading.astro";
+import MainLayout from "../layouts/main.astro";
+---
+
+<MainLayout content={{ title: "About" }}>
+  <section>
+    <Heading>About Me</Heading>
+    <h2 class="my-4 text-xl font-bold">Programmer | Traveller | Master Chef</h2>
+    <p class="my-2">
+      With over a decade of experience in software development, I am passionate
+      about building robust and scalable solutions across diverse domains.
+      Currently I work primarily with TypeScript, React, and NodeJS, and I’ve
+      used Angular and Python on several projects.
+    </p>
+    <p class="my-2">
+      As a skilled full-stack developer, I specialize in designing and
+      implementing highly scalable applications using microservices
+      architecture. My focus is on designing clean, maintainable systems: solid
+      typing, modular architecture, automated testing, and performance-aware
+      implementations.
+    </p>
+
+    <p class="my-2">
+      My adaptability and eagerness to learn new technologies have enabled me to
+      quickly master modern tools and practices, making me a valuable asset to
+      any team. On this site I document practical solutions to real problems —
+    </p>
+    <ul
+      class=`my-3 list-disc px-4`
+    >
+      <li>Architecture decisions</li>
+      <li>Debugging stories</li>
+      <li>Performance optimizations</li>
+      <li>Reusable utilities.</li>
+    </ul>
+    <p class="my-2">
+      If you read my posts you’ll find code samples, step-by-step guides, and
+      the reasoning that shaped my choices. I aim for posts that help you solve
+      the same problems faster and with fewer surprises.
+    </p>
+    <h2 class="my-4">Top Skills</h2>
+    <ul class="my-3 list-disc px-4">
+      <li>
+        Frontend: JavaScript, TypeScript, Angular, React, Web Accesibility
+      </li>
+      <li>
+        Backend &amp; DevOps: NodeJS, ExpressJS, Python, Docker, MongoDB,
+        PostgreSQL, GIT, CI/CD
+      </li>
+    </ul>
+    <p class="my-2">
+      Beyond code, I am an avid traveller and food lover, always eager to
+      explore new places, cultures, and cuisines. My interests extend to travel
+      blogging, photography, road trips, and all things automotive—especially
+      bikes and cars, which are a constant source of excitement for me.
+    </p>
+    <em class="my-3">Let's connect and create something amazing together!</em>
+  </section>
+</MainLayout>

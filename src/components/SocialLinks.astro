@@ -1,0 +1,25 @@
+---
+import type { SocialLink } from "@/types";
+
+interface Props {
+  socialLinks: SocialLink[];
+}
+
+const { socialLinks } = Astro.props;
+---
+
+<div class="flex w-full max-w-md items-center justify-between">
+  {
+    socialLinks.map(({ name, url, icon: Icon }) => (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <span class="sr-only">{name}</span>
+        <Icon size={32} weight="duotone" />
+      </a>
+    ))
+  }
+</div>

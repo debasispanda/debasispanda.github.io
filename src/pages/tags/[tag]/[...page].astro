@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPathsOptions } from "astro";
+import MainLayout from "@/layouts/main.astro";
+import Pagination from "@/components/Pagination.astro";
+import getUniqueTags from "@/utils/getUniqueTags";
+import getPostsByTag from "@/utils/getPostsByTag";
+import config from "@/site.config";
+import Tag from "@/components/Tag.astro";
+import Heading from "@/components/Heading.astro";
+import PostPreviews from "@/components/PostPreviews.astro";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection("blog");
+  const tags = getUniqueTags(posts);
+
+  return tags.flatMap(({ tag, tagName }) => {
+    const tagPosts = getPostsByTag(posts, tag);
+
+    return paginate(tagPosts, {
+      params: { tag },
+      props: { tagName },
+      pageSize: config.pageSize,
+    });
+  });
+}
+
+const params = Astro.params;
+const { tag } = params;
+const { page, tagName } = Astro.props;
+---
+
+<MainLayout content={{ title: `Tag: ${tagName}` }}>
+  <section>
+    <Heading><Tag {tag} {tagName} size="3xl" /></Heading>
+    <PostPreviews posts={page.data} />
+  </section>
+  <Pagination {page} />
+</MainLayout>

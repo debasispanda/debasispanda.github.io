@@ -1,0 +1,43 @@
+---
+import { CaretRightIcon, HouseIcon } from "@phosphor-icons/react";
+import { getBreadcrumbs } from "@/utils/getBreadCrumbs";
+
+const breadcrumbs = await getBreadcrumbs(Astro.url.pathname);
+---
+
+{
+  breadcrumbs.length > 0 && (
+    <div id="breadcrumb-container" class="sm:w-3xl p-4 sm:mx-auto">
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+          <li class="inline-flex items-center">
+            <a
+              href="/"
+              class="inline-flex items-center opacity-80 hover:text-blue-600"
+            >
+              <HouseIcon size={18} className="mr-2" />
+              Home
+            </a>
+          </li>
+          {breadcrumbs.map((bc, i) => (
+            <li>
+              <div class="flex items-center">
+                <CaretRightIcon size={18} className="mr-2" />
+                {i < breadcrumbs.length - 1 ? (
+                  <a
+                    href={`/${bc.toLowerCase()}`}
+                    class="opacity-75 hover:text-blue-600"
+                  >
+                    {bc}
+                  </a>
+                ) : (
+                  <span class="line-clamp-1 opacity-70">{bc}</span>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  )
+}
