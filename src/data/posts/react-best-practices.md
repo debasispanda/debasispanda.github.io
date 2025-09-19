@@ -8,6 +8,7 @@ coverImage:
   src: "../images/react-best-practices-cover.png"
   alt: "React best practices"
 ---
+
 # React Best Practices: Building Maintainable and Scalable Applications
 
 React has become the go-to library for building user interfaces, powering everything from small widgets to complex enterprise-scale applications. As your codebase grows, following best practices becomes crucial for maintainability, performance, and developer happiness. In this article, we’ll explore tried-and-true React best practices that every developer should know.
@@ -45,7 +46,6 @@ function Button({ onClick, children }) {
   return <button onClick={onClick}>{children}</button>;
 }
 ```
-
 
 ### **Code Splitting and Lazy Loading**
 
@@ -106,13 +106,10 @@ import { useState } from "react";
 // Functional component with useState
 function Counter() {
   const [count, setCount] = useState(0);
-  return (
-    <button onClick={() => setCount(count + 1)}>
-      Count: {count}
-    </button>
-  );
+  return <button onClick={() => setCount(count + 1)}>Count: {count}</button>;
 }
 ```
+
 ### Custom Hooks for Logic Reuse
 
 Custom hooks let you extract and reuse stateful logic across components. They follow the `use*` naming convention and can use other hooks internally.
@@ -182,11 +179,7 @@ function Toggle({ onToggle }) {
     if (onToggle) onToggle(newState);
   };
 
-  return (
-    <button onClick={handleClick}>
-      {on ? "ON" : "OFF"}
-    </button>
-  );
+  return <button onClick={handleClick}>{on ? "ON" : "OFF"}</button>;
 }
 ```
 
@@ -254,7 +247,13 @@ function List({ items }) {
     return items.slice().sort();
   }, [items]);
 
-  return <ul>{sortedItems.map(item => <li key={item}>{item}</li>)}</ul>;
+  return (
+    <ul>
+      {sortedItems.map(item => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  );
 }
 ```
 
@@ -341,7 +340,7 @@ Use PropTypes or TypeScript to document and validate your component’s props. T
 ### PropTypes
 
 ```tsx
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function UserCard({ name, age }) {
   // ...
@@ -363,12 +362,13 @@ interface UserCardProps {
   age?: number;
 }
 
-const UserCard: React.FC<UserCardProps> = ({ name, age }) => {}
+const UserCard: React.FC<UserCardProps> = ({ name, age }) => {};
 
 // Or
 
 function UserCard({ name, age }: UserCardProps) {}
 ```
+
 You will get instant compile time type checking with better IDE support (autocomplete, refactoring, static analysis).
 
 ---
@@ -480,8 +480,12 @@ function Navigation() {
   return (
     <nav>
       <ul>
-        <li><a href="/home">Home</a></li>
-        <li><a href="/about">About</a></li>
+        <li>
+          <a href="/home">Home</a>
+        </li>
+        <li>
+          <a href="/about">About</a>
+        </li>
       </ul>
     </nav>
   );
@@ -507,8 +511,8 @@ function CustomButton({ onClick, children }) {
       role="button"
       tabIndex={0}
       onClick={onClick}
-      onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onClick()}
-      style={{ cursor: 'pointer' }}
+      onKeyDown={e => (e.key === "Enter" || e.key === " ") && onClick()}
+      style={{ cursor: "pointer" }}
     >
       {children}
     </div>
@@ -519,6 +523,7 @@ function CustomButton({ onClick, children }) {
 ---
 
 ## 11. **Testing**
+
 When building components, prioritize testability from the start. Adopting a Test-Driven Development (TDD) approach helps ensure your components are reliable and maintainable. Use tools like React Testing Library and Jest to validate user interactions and component logic. Strive for a balanced mix of unit, integration, and end-to-end tests to cover critical user flows and edge cases.
 
 ### Testing Best Practices
@@ -532,10 +537,10 @@ When building components, prioritize testability from the start. Adopting a Test
 #### Example: Testing a Button Component
 
 ```tsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import Button from './Button';
+import { render, screen, fireEvent } from "@testing-library/react";
+import Button from "./Button";
 
-test('calls onClick when clicked', () => {
+test("calls onClick when clicked", () => {
   const handleClick = jest.fn();
   render(<Button onClick={handleClick}>Show More</Button>);
   fireEvent.click(screen.getByText(/show more/i));
