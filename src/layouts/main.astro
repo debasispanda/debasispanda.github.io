@@ -19,7 +19,7 @@ const {
   subTitle = site.subTitle,
   description = site.description,
   author = site.author,
-  bannerUrl,
+  bannerUrl = site.defaultBannerUrl,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.url);
 ---

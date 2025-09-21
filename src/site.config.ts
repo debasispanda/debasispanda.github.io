@@ -28,7 +28,7 @@ const config: SiteConfig = {
   // For pagination, the number of posts to display per page.
   // The homepage will display half this number in the "Latest Posts" section.
   pageSize: 6,
-  defaultBannerUrl: "/default-banner.png",
+  defaultBannerUrl: "/banner.png",
   navLinks: [
     {
       name: "About",

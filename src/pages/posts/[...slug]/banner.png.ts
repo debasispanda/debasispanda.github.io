@@ -5,7 +5,7 @@ import { generatePostBanner } from "@/utils/generateBanner";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog").then(p =>
-    p.filter(({ data }) => !data.isDraft)
+    p.filter(({ data }) => !data.isDraft && !data.coverImage)
   );
 
   return posts.map(post => ({
