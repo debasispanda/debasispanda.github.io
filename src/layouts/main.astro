@@ -4,8 +4,24 @@ import Footer from "@/components/Footer.astro";
 import Hr from "@/components/Hr.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import "@/styles/global.css";
+import site from "@/site.config";
 
-const { content } = Astro.props;
+export interface Props {
+  title?: string;
+  subTitle?: string;
+  description?: string;
+  author?: string;
+  bannerUrl?: string;
+}
+
+const {
+  title = site.title,
+  subTitle = site.subTitle,
+  description = site.description,
+  author = site.author,
+  bannerUrl,
+} = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.url);
 ---
 
 <!doctype html>
@@ -15,18 +31,28 @@ const { content } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="I am Debasis Panda and I am working as a fullstack developer and have expertise in frontend technologies."
-    />
-    <meta name="author" content="Debasis Panda" />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalURL} />
     <title>
-      {content.title} | Debasis Panda - Developer, Traveller, Blogger
+      {title} | {author} - {subTitle}
     </title>
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={site.title}
+      href={new URL("rss.xml", Astro.site)}
+    />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={bannerUrl} />
     <script is:inline src="/scripts.js"></script>
   </head>
   <body>

@@ -18,12 +18,15 @@ export interface SiteConfig {
   site: string;
   font: string;
   title: string;
+  subTitle: string;
   description: string;
   author: string;
   tags: string[];
   pageSize: number;
+  defaultBannerUrl?: string;
   socialLinks: SocialLink[];
   shareLinks: SocialLink[];
   navLinks: NavLink[];
   scheduledPostMargin: number;
+  bannerColor: [string, string][];
 }

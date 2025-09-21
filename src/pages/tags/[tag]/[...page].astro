@@ -30,7 +30,7 @@ const { tag } = params;
 const { page, tagName } = Astro.props;
 ---
 
-<MainLayout content={{ title: `Tag: ${tagName}` }}>
+<MainLayout title=`Tag: ${tagName}`>
   <section>
     <Heading><Tag {tag} {tagName} size="3xl" /></Heading>
     <PostPreviews posts={page.data} />

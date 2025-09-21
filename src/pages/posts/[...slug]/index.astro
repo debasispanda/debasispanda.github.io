@@ -23,9 +23,10 @@ const { post } = Astro.props;
 
 const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
+const { title, description, author } = post.data;
 ---
 
-<MainLayout content={{ title: "Posts" }}>
+<MainLayout title={title} author={author} description={description}>
   <section>
     <PostDetails post={post} posts={sortedPosts} />
   </section>
