@@ -20,8 +20,9 @@ export const generateRootBanner = async () => {
   const rootData = {
     title: siteConfig.title,
     description: siteConfig.subTitle,
-    socials: siteConfig.socialLinks
-      .filter(({ name }) => socials.includes(name))
+    socials: siteConfig.socialLinks.filter(({ name }) =>
+      socials.includes(name)
+    ),
   };
   const svg = await postOgImage(rootData);
   return svgToPng(svg);

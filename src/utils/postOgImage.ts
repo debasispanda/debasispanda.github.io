@@ -82,7 +82,7 @@ export const postOgImage = async ({
                           fontWeight: "bold",
                           height: 100,
                           overflow: "hidden",
-                          margin: 0
+                          margin: 0,
                         },
                         children: title,
                       },
@@ -94,7 +94,7 @@ export const postOgImage = async ({
                           fontSize: 32,
                           fontWeight: "bold",
                           overflow: "hidden",
-                          margin: 0
+                          margin: 0,
                         },
                         children: description,
                       },
