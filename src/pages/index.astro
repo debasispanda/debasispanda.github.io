@@ -16,7 +16,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const recentTags = getUniqueTags(recentPosts);
 ---
 
-<MainLayout content={{ title: "Home" }}>
+<MainLayout title="Home">
   <section id="hero" class="pb-6 pt-8">
     <Heading className="my-4 inline-block text-4xl sm:my-8 sm:text-5xl">
       Namaste

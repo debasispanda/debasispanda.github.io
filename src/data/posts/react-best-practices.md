@@ -9,8 +9,6 @@ coverImage:
   alt: "React best practices"
 ---
 
-# React Best Practices: Building Maintainable and Scalable Applications
-
 React has become the go-to library for building user interfaces, powering everything from small widgets to complex enterprise-scale applications. As your codebase grows, following best practices becomes crucial for maintainability, performance, and developer happiness. In this article, we’ll explore tried-and-true React best practices that every developer should know.
 
 ---
@@ -286,7 +284,7 @@ React 19 introduces the React Compiler, which automatically memoizes components 
 
 ---
 
-## 6 **Handle Memory Leaks**
+## 6. **Handle Memory Leaks**
 
 Memory leaks can occur when components retain resources (like timers, subscriptions, or event listeners) after they unmount, leading to degraded performance over time. Prevent leaks by cleaning up side effects in your components.
 

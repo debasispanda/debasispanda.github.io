@@ -12,11 +12,12 @@ import {
 
 const config: SiteConfig = {
   site: "https://debasispanda.github.io",
+  subTitle: "Developer, Traveller, Blogger",
   // The name of your site, used in the title and for SEO.
   title: "Debasis Panda",
   // The description of your site, used for SEO and RSS feed.
   description:
-    "A coder-ready Astro blog theme with 59 of your favorite color schemes to choose from",
+    "I am Debasis Panda and I am working as a fullstack developer and have expertise in frontend technologies.",
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: "Debasis Panda",
   // Keywords for SEO, used in the meta tags.
@@ -27,6 +28,7 @@ const config: SiteConfig = {
   // For pagination, the number of posts to display per page.
   // The homepage will display half this number in the "Latest Posts" section.
   pageSize: 6,
+  defaultBannerUrl: "/default-banner.png",
   navLinks: [
     {
       name: "About",
@@ -43,27 +45,27 @@ const config: SiteConfig = {
   ],
   socialLinks: [
     {
-      name: "github",
+      name: "Github",
       url: "https://github.com/debasispanda",
       icon: GithubLogoIcon,
     },
     {
-      name: "x",
+      name: "X",
       url: "https://www.x.com/imdebasispanda",
       icon: XLogoIcon,
     },
     {
-      name: "linkedin",
+      name: "LinkedIn",
       url: "https://www.linkedin.com/in/imdebasispanda",
       icon: LinkedinLogoIcon,
     },
     {
-      name: "email",
+      name: "Email",
       url: "mailto:imdebasispanda@gmail.com",
       icon: EnvelopeIcon,
     },
     {
-      name: "rss",
+      name: "Rss",
       url: "/rss.xml",
       icon: RssIcon,
     },
@@ -108,6 +110,18 @@ const config: SiteConfig = {
     },
   ],
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
+  bannerColor: [
+    ["#e66465", "#9198e5"],
+    ["#99f2c8", "#1f4037"],
+    ["#b92b27", "#1565C0"],
+    ["#f12711", "#f5af19"],
+    ["#108dc7", "#ef8e38"],
+    ["#00b09b", "#96c93d"],
+    ["#CAC531", "#F3F9A7"],
+    ["#00F260", "#0575E6"],
+    ["#ff9966", "#ff5e62"],
+    ["#EB5757", "#000000"],
+  ],
 };
 
 export default config;

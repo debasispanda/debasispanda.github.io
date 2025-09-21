@@ -10,7 +10,7 @@ const posts = await getCollection("blog");
 let tags = getUniqueTags(posts);
 ---
 
-<MainLayout content={{ title: "Tags" }}>
+<MainLayout title="Tags">
   <section>
     <Heading>Tags</Heading>
     <Tags tags={tags} />
