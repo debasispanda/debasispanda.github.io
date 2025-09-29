@@ -122,6 +122,13 @@ const config: SiteConfig = {
     ["#ff9966", "#ff5e62"],
     ["#EB5757", "#000000"],
   ],
+  giscus: {
+    repo: "debasispanda/debasispanda.github.io",
+    repoId: "MDEwOlJlcG9zaXRvcnk2ODYyMjU1Nw==",
+    category: "General",
+    categoryId: "DIC_kwDOBBcY3c4CvKPI",
+    reactionsEnabled: true,
+  },
 };
 
 export default config;
