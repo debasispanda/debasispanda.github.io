@@ -4,6 +4,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import PostDetails from "@/components/PostDetails.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
+import GiscusLoader from "@/components/GiscusLoader.astro";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -29,5 +30,6 @@ const { title, description, author } = post.data;
 <MainLayout title={title} author={author} description={description}>
   <section>
     <PostDetails post={post} posts={sortedPosts} />
+    <GiscusLoader />
   </section>
 </MainLayout>

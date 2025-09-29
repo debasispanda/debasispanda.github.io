@@ -13,6 +13,6 @@ export default [
       },
     },
   },
-  { rules: { "no-console": "error" } },
+  { rules: { "no-console": ["error", { allow: ["error", "warn", "info"] }] } },
   { ignores: ["dist/**", ".astro", "public/pagefind/**"] },
 ];
