@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import Datetime from "@/components/Datetime.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import PrevNextPost from "@/components/PrevNextPost.astro";
+import MinutesRead from "./MinutesRead.astro";
 import Tags from "./Tags.astro";
 import { textToTag } from "@/utils/textToTag";
 import Heading from "./Heading.astro";
@@ -24,10 +25,8 @@ const {
   tags: tagLabels,
 } = post.data;
 
-const { Content, remarkPluginFrontmatter } = await render(post);
+const { Content } = await render(post);
 const tags = tagLabels.map(textToTag);
-
-const { minutesRead } = remarkPluginFrontmatter;
 ---
 
 <div id="post-content" data-pagefind-body>
@@ -35,13 +34,7 @@ const { minutesRead } = remarkPluginFrontmatter;
   <p class="text-sm opacity-70">{description}</p>
   <div class="my-2 flex items-center gap-2">
     <Datetime {publishedAt} {modifiedAt} size="lg" />
-    {
-      minutesRead && (
-        <span class="opacity-80 before:mx-0.5 before:inline-block before:content-['·']">
-          {minutesRead}
-        </span>
-      )
-    }
+    <MinutesRead post={post} />
   </div>
   {
     coverImage && (

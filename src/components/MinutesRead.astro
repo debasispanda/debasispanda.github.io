@@ -1,0 +1,19 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const {
+  remarkPluginFrontmatter: { minutesRead },
+} = await render(Astro.props.post);
+---
+
+{
+  minutesRead && (
+    <span class="opacity-80 before:mx-0.5 before:inline-block before:content-['·']">
+      {minutesRead}
+    </span>
+  )
+}

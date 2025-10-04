@@ -2,12 +2,16 @@
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
+import MinutesRead from "./MinutesRead.astro";
 
-export interface Props extends CollectionEntry<"blog"> {
+export interface Props {
   variant?: "h2" | "h3";
+  post: CollectionEntry<"blog">;
 }
 
-const { variant = "h2", data, id, filePath } = Astro.props;
+const { variant = "h2", post } = Astro.props;
+
+const { data, id, filePath } = post;
 
 const { title, description, publishedAt, modifiedAt } = data;
 
@@ -29,6 +33,9 @@ const headerProps = {
       )
     }
   </a>
-  <Datetime {publishedAt} {modifiedAt} />
+  <div class="my-2 flex items-center gap-2">
+    <Datetime {publishedAt} {modifiedAt} />
+    <MinutesRead post={post} />
+  </div>
   <p>{description}</p>
 </div>

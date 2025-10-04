@@ -15,7 +15,7 @@ const { posts, variant, className = "" } = Astro.props;
   {
     posts.map(post => (
       <li class="my-6">
-        <PostPreview {...post} variant={variant} />
+        <PostPreview post={post} variant={variant} />
       </li>
     ))
   }
