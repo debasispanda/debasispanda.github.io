@@ -1,23 +1,17 @@
 import satori, { type SatoriOptions } from "satori";
 import type { ReactNode } from "react";
 import postOgFonts from "./postOgFonts";
-import site from "@/site.config";
+import config from "@/site.config";
 import type { SocialLink } from "@/types";
 
 interface OgData {
   title: string;
   description: string;
-  author?: string;
   socials?: SocialLink[];
 }
 
-export const postOgImage = async ({
-  title,
-  description,
-  author,
-  socials,
-}: OgData) => {
-  const color = site.bannerColor[Math.floor(Math.random() * 10)];
+export const postOgImage = async ({ title, description, socials }: OgData) => {
+  const color = config.bannerColor[Math.floor(Math.random() * 10)];
   return satori(
     {
       type: "div",
@@ -78,11 +72,10 @@ export const postOgImage = async ({
                       type: "h1",
                       props: {
                         style: {
-                          fontSize: 72,
+                          fontSize: 50,
                           fontWeight: "bold",
-                          height: 100,
-                          overflow: "hidden",
                           margin: 0,
+                          marginBottom: 20,
                         },
                         children: title,
                       },
@@ -97,46 +90,6 @@ export const postOgImage = async ({
                           margin: 0,
                         },
                         children: description,
-                      },
-                    },
-                    author && {
-                      type: "div",
-                      props: {
-                        style: {
-                          display: "flex",
-                          justifyContent: "flex-end",
-                          width: "100%",
-                          marginBottom: "8px",
-                          marginTop: "auto",
-                          fontSize: 28,
-                        },
-                        children: [
-                          {
-                            type: "span",
-                            props: {
-                              children: [
-                                "by ",
-                                {
-                                  type: "span",
-                                  props: {
-                                    style: { color: "transparent" },
-                                    children: '"',
-                                  },
-                                },
-                                {
-                                  type: "span",
-                                  props: {
-                                    style: {
-                                      overflow: "hidden",
-                                      fontWeight: "bold",
-                                    },
-                                    children: author,
-                                  },
-                                },
-                              ],
-                            },
-                          },
-                        ],
                       },
                     },
                     socials && {
@@ -175,6 +128,29 @@ export const postOgImage = async ({
                         })),
                       },
                     },
+                    {
+                      type: "div",
+                      props: {
+                        style: {
+                          display: "flex",
+                          justifyContent: "flex-end",
+                          width: "100%",
+                          marginBottom: "8px",
+                          marginTop: "auto",
+                        },
+                        children: [
+                          {
+                            type: "span",
+                            props: {
+                              style: {
+                                opacity: 0.6,
+                              },
+                              children: [config.site],
+                            },
+                          },
+                        ],
+                      },
+                    },
                   ],
                 },
               },
@@ -188,7 +164,7 @@ export const postOgImage = async ({
       height: 630,
       embedFont: true,
       fonts: await postOgFonts(
-        `${title}${description}${author}${site.title}${socials?.map(s => `${s.name} ${s.url}`)} by`
+        `${title}${description}${config.site}${socials?.map(s => `${s.name} ${s.url}`)}`
       ),
     } as SatoriOptions
   );

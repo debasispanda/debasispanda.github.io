@@ -5,6 +5,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 import config from "./src/site.config";
+import remarkReadingTime from "./src/plugins/remark-reading-time";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,6 +19,9 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
+  },
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
   },
   image: {
     responsiveStyles: true,
