@@ -22,11 +22,12 @@ const {
   publishedAt,
   modifiedAt,
   tags: tagLabels,
-  editable,
 } = post.data;
 
-const { Content } = await render(post);
+const { Content, remarkPluginFrontmatter } = await render(post);
 const tags = tagLabels.map(textToTag);
+
+const { minutesRead } = remarkPluginFrontmatter;
 ---
 
 <div id="post-content" data-pagefind-body>
@@ -34,10 +35,13 @@ const tags = tagLabels.map(textToTag);
   <p class="text-sm opacity-70">{description}</p>
   <div class="my-2 flex items-center gap-2">
     <Datetime {publishedAt} {modifiedAt} size="lg" />
-    <span
-      aria-hidden="true"
-      class:list={["max-sm:hidden", { hidden: !editable }]}>|</span
-    >
+    {
+      minutesRead && (
+        <span class="opacity-80 before:mx-0.5 before:inline-block before:content-['·']">
+          {minutesRead}
+        </span>
+      )
+    }
   </div>
   {
     coverImage && (
@@ -46,6 +50,15 @@ const tags = tagLabels.map(textToTag);
         layout="constrained"
         src={coverImage.src}
         alt={coverImage.alt}
+        class="mb-5 w-full rounded-xl"
+      />
+    )
+  }
+  {
+    !coverImage && (
+      <img
+        src={`${Astro.url}/banner.png`}
+        alt={description}
         class="mb-5 w-full rounded-xl"
       />
     )
