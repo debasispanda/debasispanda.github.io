@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import partytown from "@astrojs/partytown";
 
 import config from "./src/site.config";
 import remarkReadingTime from "./src/plugins/remark-reading-time";
@@ -27,5 +28,9 @@ export default defineConfig({
     responsiveStyles: true,
     layout: "constrained",
   },
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap(),
+    partytown({ config: { forward: ["dataLayer.push"] } }),
+  ],
 });

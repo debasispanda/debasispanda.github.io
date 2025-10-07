@@ -1,0 +1,25 @@
+---
+import config from "@/site.config";
+---
+
+<!-- Google tag (gtag.js) -->
+<script
+  type="text/partytown"
+  async
+  src=`https://www.googletagmanager.com/gtag/js?id=${config.gaMeasurementId}`
+></script>
+<script
+  type="text/partytown"
+  data-ga-measurement-id={config.gaMeasurementId}
+  id="ga-init"
+>
+  const measurementId = document
+    .getElementById("ga-init")
+    .getAttribute("data-ga-measurement-id");
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args) {
+    dataLayer.push(args);
+  }
+  gtag("js", new Date());
+  gtag("config", measurementId);
+</script>

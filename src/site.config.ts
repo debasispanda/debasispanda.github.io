@@ -129,6 +129,7 @@ const config: SiteConfig = {
     categoryId: "DIC_kwDOBBcY3c4CvKPI",
     reactionsEnabled: true,
   },
+  gaMeasurementId: "G-ESKX4W4BP2",
 };
 
 export default config;

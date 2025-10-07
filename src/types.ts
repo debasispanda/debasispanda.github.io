@@ -38,4 +38,5 @@ export interface SiteConfig {
   scheduledPostMargin: number;
   bannerColor: [string, string][];
   giscus?: GiscusConfig;
+  gaMeasurementId: string;
 }

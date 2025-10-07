@@ -1,0 +1,39 @@
+---
+import site from "@/site.config";
+const {
+  title = site.title,
+  subTitle = site.subTitle,
+  description = site.description,
+  author = site.author,
+  bannerUrl = site.defaultBannerUrl,
+} = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.url);
+---
+
+<meta charset="utf-8" />
+<meta name="generator" content={Astro.generator} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#000000" />
+<meta name="description" content={description} />
+<meta name="author" content={author} />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="canonical" href={canonicalURL} />
+<title>
+  {title} | {author} - {subTitle}
+</title>
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={site.title}
+  href={new URL("rss.xml", Astro.site)}
+/>
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={bannerUrl} />
+<script is:inline src="/scripts.js"></script>
