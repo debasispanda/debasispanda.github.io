@@ -28,7 +28,7 @@
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.2.2",
     "astro": "^5.16.4",
-    "dayjs": "^1.11.18",
+    "dayjs": "^1.11.19",
     "lodash": "^4.17.21",
     "mdast-util-to-string": "^4.0.0",
     "pagefind": "^1.4.0",
