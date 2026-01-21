@@ -29,7 +29,7 @@
     "@types/react-dom": "^19.2.2",
     "astro": "^5.16.5",
     "dayjs": "^1.11.18",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "mdast-util-to-string": "^4.0.0",
     "pagefind": "^1.4.0",
     "react": "^19.1.1",
