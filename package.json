@@ -27,7 +27,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.2.2",
-    "astro": "^5.16.5",
+    "astro": "^5.18.1",
     "dayjs": "^1.11.19",
     "lodash": "^4.17.23",
     "mdast-util-to-string": "^4.0.0",
