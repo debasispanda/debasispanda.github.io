@@ -16,7 +16,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.12",
+    "@astrojs/mdx": "^5.0.6",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "^4.0.14",
@@ -27,7 +27,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.2.2",
-    "astro": "^5.16.5",
+    "astro": "^6.3.5",
     "dayjs": "^1.11.20",
     "lodash": "^4.18.1",
     "mdast-util-to-string": "^4.0.0",
