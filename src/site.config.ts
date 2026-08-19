@@ -134,6 +134,8 @@ const config: SiteConfig = {
     reactionsEnabled: true,
   },
   gaMeasurementId: "G-ESKX4W4BP2",
+  contactFormUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLSf-hPDMGd7loe6-0tGyFGbJRaCxANMb7LnpDE9D_axhO2jp7Q/viewform?usp=header",
 };
 
 export default config;

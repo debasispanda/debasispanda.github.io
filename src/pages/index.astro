@@ -8,6 +8,7 @@ import getUniqueTags from "@/utils/getUniqueTags";
 import Tags from "@/components/Tags.astro";
 import Heading from "@/components/Heading.astro";
 import PostPreviews from "@/components/PostPreviews.astro";
+import ConnectButton from "@/components/ConnectButton.astro";
 
 const posts = await getCollection("blog");
 
@@ -19,7 +20,7 @@ const recentTags = getUniqueTags(recentPosts);
 <MainLayout title="Home">
   <section id="hero" class="pb-6 pt-8">
     <Heading className="my-4 inline-block text-4xl sm:my-8 sm:text-5xl">
-      Namaste
+      Namaste {" "}
       <HandsPrayingIcon
         weight="bold"
         className="relative -left-2 inline-block"
@@ -28,7 +29,7 @@ const recentTags = getUniqueTags(recentPosts);
     <p>
       I’m Debasis, a software engineer focused on building reliable,
       maintainable web applications. My toolkit includes TypeScript, React,
-      Angular, Node.js, and Python. I care about type-safe code, clear
+      Angular, Node.js, Python and Go. I care about type-safe code, clear
       architecture, and measurable performance. This site collects my notes on
       engineering problems, code patterns, and technical learnings.
     </p>
@@ -38,7 +39,7 @@ const recentTags = getUniqueTags(recentPosts);
       blog is where I share what I learn.
     </p>
     <p class="mt-6">
-      Read the blog posts or check
+      Read the blog posts or check {" "}
       <LinkButton
         class="hover:text-accent underline decoration-dashed underline-offset-4"
         href="/about"
@@ -46,6 +47,8 @@ const recentTags = getUniqueTags(recentPosts);
         /About
       </LinkButton> for more info.
     </p>
+    <br />
+    <ConnectButton />
   </section>
   {
     !!recentPosts?.length && (

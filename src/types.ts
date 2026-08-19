@@ -39,4 +39,5 @@ export interface SiteConfig {
   bannerColor: [string, string][];
   giscus?: GiscusConfig;
   gaMeasurementId: string;
+  contactFormUrl: string;
 }
