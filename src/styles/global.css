@@ -89,6 +89,7 @@ html[data-theme="dark"] {
   display: none;
 }
 
-#mermaid-0, .flowchart {
+#mermaid-0,
+.flowchart {
   margin: 0 auto;
 }
