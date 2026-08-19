@@ -4,6 +4,7 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
+import rehypeMermaid from "rehype-mermaid";
 
 import config from "./src/site.config";
 import remarkReadingTime from "./src/plugins/remark-reading-time";
@@ -23,6 +24,10 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [remarkReadingTime],
+    syntaxHighlight: {
+      excludeLangs: ["mermaid"],
+    },
+    rehypePlugins: [rehypeMermaid],
   },
   image: {
     responsiveStyles: true,

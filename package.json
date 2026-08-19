@@ -35,9 +35,11 @@
     "lodash": "^4.18.1",
     "mdast-util-to-string": "^4.0.0",
     "pagefind": "^1.4.0",
+    "playwright": "^1.62.1",
     "react": "^19.1.1",
     "react-dom": "^19.2.0",
     "reading-time": "^1.5.0",
+    "rehype-mermaid": "^3.0.0",
     "satori": "^0.26.0",
     "tailwindcss": "^4.3.0"
   },

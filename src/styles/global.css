@@ -88,3 +88,7 @@ html[data-theme="dark"] {
 [data-popover]:not([open]) {
   display: none;
 }
+
+#mermaid-0, .flowchart {
+  margin: 0 auto;
+}
