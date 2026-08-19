@@ -65,7 +65,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
       - name: Install Playwright browser
-        run: ${{ steps.detect-package-manager.outputs.runner }} playwright install --with-deps chromium
+        run: ${{ steps.detect-package-manager.outputs.runner }} playwright install chromium
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         run: |
