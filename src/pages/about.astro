@@ -1,6 +1,7 @@
 ---
 import Heading from "@/components/Heading.astro";
 import MainLayout from "../layouts/main.astro";
+import ConnectButton from "@/components/ConnectButton.astro";
 ---
 
 <MainLayout title="About">
@@ -10,11 +11,11 @@ import MainLayout from "../layouts/main.astro";
     <p class="my-2">
       With over a decade of experience in software development, I am passionate
       about building robust and scalable solutions across diverse domains.
-      Currently I work primarily with TypeScript, React, and NodeJS, and I’ve
-      used Angular and Python on several projects.
+      Currently I work primarily with TypeScript, React, NodeJS, Python, Go etc
+      and I’ve developed expertise in these technologies.
     </p>
     <p class="my-2">
-      As a skilled full-stack developer, I specialize in designing and
+      As a skilled senior full-stack developer, I specialize in designing and
       implementing highly scalable applications using microservices
       architecture. My focus is on designing clean, maintainable systems: solid
       typing, modular architecture, automated testing, and performance-aware
@@ -26,7 +27,7 @@ import MainLayout from "../layouts/main.astro";
       quickly master modern tools and practices, making me a valuable asset to
       any team. On this site I document practical solutions to real problems —
     </p>
-    <ul class=`my-3 list-disc px-4`>
+    <ul class="my-3 list-disc px-8">
       <li>Architecture decisions</li>
       <li>Debugging stories</li>
       <li>Performance optimizations</li>
@@ -37,15 +38,23 @@ import MainLayout from "../layouts/main.astro";
       the reasoning that shaped my choices. I aim for posts that help you solve
       the same problems faster and with fewer surprises.
     </p>
-    <h2 class="my-4">Top Skills</h2>
-    <ul class="my-3 list-disc px-4">
+    <h2 class="my-4"><strong>Top Skills</strong></h2>
+    <ul class="my-3 list-disc px-8">
       <li>
-        Frontend: JavaScript, TypeScript, Angular, React, Web Accesibility
+        <strong>AI :</strong> Agentic AI, MCP, Multi LLM Integration, AI Workflows
+      </li>
+      <li><strong>Languages :</strong> TypeScript, JavaScript, Python, Go</li>
+      <li>
+        <strong>Frontend :</strong> React, NextJS, GraphQL, Tailwind, Web Accessibility
       </li>
       <li>
-        Backend &amp; DevOps: NodeJS, ExpressJS, Python, Docker, MongoDB,
-        PostgreSQL, GIT, CI/CD
+        <strong>Backend :</strong> NodeJS, Express/Fastify, FastAPI, Web APIs, OpenAPI,
+        Microservices
       </li>
+      <li>
+        <strong>Cloud & DevOps :</strong> Docker, Kubernetes, AWS, GCP, Github Actions
+      </li>
+      <li><strong>Testing :</strong> Jest, Playwright, Pytest</li>
     </ul>
     <p class="my-2">
       Beyond code, I am an avid traveller and food lover, always eager to
@@ -53,6 +62,8 @@ import MainLayout from "../layouts/main.astro";
       blogging, photography, road trips, and all things automotive—especially
       bikes and cars, which are a constant source of excitement for me.
     </p>
-    <em class="my-3">Let's connect and create something amazing together!</em>
+    <em class="my-3">
+      <ConnectButton /> and create something amazing together!
+    </em>
   </section>
 </MainLayout>
