@@ -10,6 +10,9 @@ import {
   FacebookLogoIcon,
 } from "@phosphor-icons/react";
 
+const contactFormUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLSf-hPDMGd7loe6-0tGyFGbJRaCxANMb7LnpDE9D_axhO2jp7Q/viewform?usp=header";
+
 const config: SiteConfig = {
   site: "https://debasispanda.github.io",
   subTitle: "Developer, Traveller, Blogger",
@@ -65,7 +68,7 @@ const config: SiteConfig = {
     },
     {
       name: "Email",
-      url: "mailto:imdebasispanda@gmail.com",
+      url: contactFormUrl,
       icon: EnvelopeIcon,
     },
     {
@@ -134,8 +137,7 @@ const config: SiteConfig = {
     reactionsEnabled: true,
   },
   gaMeasurementId: "G-ESKX4W4BP2",
-  contactFormUrl:
-    "https://docs.google.com/forms/d/e/1FAIpQLSf-hPDMGd7loe6-0tGyFGbJRaCxANMb7LnpDE9D_axhO2jp7Q/viewform?usp=header",
+  contactFormUrl,
 };
 
 export default config;
