@@ -40,7 +40,7 @@
     "react-dom": "^19.2.0",
     "reading-time": "^1.5.0",
     "rehype-mermaid": "^3.0.0",
-    "satori": "^0.29.0",
+    "satori": "^0.33.3",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
